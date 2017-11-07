@@ -72,7 +72,7 @@ int main()
 		  double throttle_value;
           
 		  pid.UpdateError(cte);
-		  steer_value = - pid.TotalError();
+		  steer_value = - pid.AntiWindup();
 		  
 		  pid_t.UpdateError(120 - speed);
 		  throttle_value = pid_t.TotalError();

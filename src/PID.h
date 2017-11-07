@@ -9,6 +9,8 @@ public:
   double p_error;
   double i_error;
   double d_error;
+  double i_windup;
+  double d_windup;
   double prev_cte;
   double i_cte;
 
@@ -41,6 +43,11 @@ public:
 
   /*
   * Calculate the total PID error.
+  */
+  double TotalError();
+  
+  /*
+  * Calculate the total PID error using an anti windup controller.
   */
   double TotalError();
 };
