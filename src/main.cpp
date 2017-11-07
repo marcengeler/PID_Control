@@ -40,12 +40,14 @@ int main()
   // go down with the proportional part even more
   // Also decreased the integral part by a factor of 10, because the signal
   // got worse over time, which indicates a too high integrational part,
-  pid.Init(0.2, 0.005, 3.0);
+  
+  // 0.2, 0.005, 7.0 still a lot of oscillations, 
+  pid.Init(0.2, 0.005, 14.0);
   
   
   // Added PD Throttle Control
   PID pid_t;
-  pid_t.Init(0.3, 0.0, 3.0);
+  pid_t.Init(0.3, 0.0001, 3.0);
 
   h.onMessage([&pid, &pid_t](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
