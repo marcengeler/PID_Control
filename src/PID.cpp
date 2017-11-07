@@ -38,11 +38,11 @@ double PID::TotalError() {
 }
 
 double PID::AntiWindup() {
-	double control = p_error + i_error + d_error;
+	double control = + p_error + i_error + d_error;
 	double dcontrol = 0;
-	if (control > 0) {
+	if (control > 25) {
 		dcontrol = 25 - control;
-	} else {
+	} else if (control < -25) {
 		dcontrol = -25 - control;
 	}
 	
