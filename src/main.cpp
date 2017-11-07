@@ -42,10 +42,12 @@ int main()
   // got worse over time, which indicates a too high integrational part,
   pid.Init(0.1, 0.005, 3.0);
   
+  
+  // Added PD Throttle Control
   PID pid_t;
   pid_t.Init(0.3, 0.0, 3.0);
 
-  h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
+  h.onMessage([&pid, &pid_t](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
