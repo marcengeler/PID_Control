@@ -47,11 +47,11 @@ double PID::AntiWindup() {
 	}
 	
     d_windup += d_error;
-	i_windup = 0.5 * dcontrol;
+	i_windup = 0.05 * dcontrol;
 	
-	i_error += 0.5 * i_windup;
+	i_error += i_windup;
 	d_error -= d_windup;
 	
-	return p_error + i_error + 0.5 * d_error;
+	return p_error + i_error + 0.05 * d_error;
 }
 
