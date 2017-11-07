@@ -35,7 +35,13 @@ int main()
   PID pid;
   // 0.5, 0.01, 10.0 had a lot of swinging in the signal
   // Reduced Kp a bit and thus increased Ki a bit to countermeasure
-  pid.Init(0.3, 0.02, 10.0);
+  
+  // 0.3, 0.02, 10.0 still some oscillations in the signal, decided to
+  // go down with the proportional part even more
+  // Also decreased the integral part by a factor of 10, because the signal
+  // got worse over time, which indicates a too high integrational part, also
+  // slightly increased D part to countermeasure
+  pid.Init(0.15, 0.002, 20.0);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
