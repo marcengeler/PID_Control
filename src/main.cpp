@@ -46,7 +46,7 @@ int main()
   
   // 0.2, 0.005, 21.0 looks ok, but has some large errors from time to time, so
   // I increased the proportional part again
-  pid.Init(0.4, 0.005, 24.0);
+  pid.Init(0.4, 0.005, 45.0);
   
   
   // Added PD Throttle Control
