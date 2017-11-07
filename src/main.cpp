@@ -43,12 +43,15 @@ int main()
   
   // 0.2, 0.005, 7.0 still a lot of oscillations, so I increased the D part to
   // dampen the system
-  pid.Init(0.2, 0.005, 21.0);
+  
+  // 0.2, 0.005, 21.0 looks ok, but has some large errors from time to time, so
+  // I increased the proportional part again
+  pid.Init(0.4, 0.005, 24.0);
   
   
   // Added PD Throttle Control
   PID pid_t;
-  pid_t.Init(0.3, 0.0001, 3.0);
+  pid_t.Init(0.6, 0.0001, 3.0);
 
   h.onMessage([&pid, &pid_t](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
