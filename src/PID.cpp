@@ -39,10 +39,11 @@ double PID::TotalError() {
 
 double PID::AntiWindup() {
 	double control = p_error + i_error + d_error;
+	double dcontrol = 0;
 	if (control > 0) {
-		double dcontrol = 25 - control;
+		dcontrol = 25 - control;
 	} else {
-		double dcontrol = -25 - control;
+		dcontrol = -25 - control;
 	}
 	
     d_windup += d_error;
