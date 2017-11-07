@@ -11,10 +11,10 @@ PID::PID() {}
 PID::~PID() {}
 
 void PID::Init(double Kp, double Ki, double Kd) {
-	// First set to test out 1.0, 1.0, 1.0
-	PID::Kp = 10.0;
-	PID::Ki = 1.0 * PID::Kp; // Intuition from my engineering school to have kp and ti together
-	PID::Kd = 1.0 * PID::Kp; // Intuition from my engineering school to have kp and td together
+	
+	PID::Kp = Kp;
+	PID::Ki = Ki * PID::Kp; // Intuition from my engineering school to have kp and ti together
+	PID::Kd = Kd * PID::Kp; // Intuition from my engineering school to have kp and td together
 	
 	p_error = 0.0;
 	i_error = 0.0;
