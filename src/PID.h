@@ -49,7 +49,7 @@ public:
   /*
   * Calculate the total PID error using an anti windup controller.
   */
-  double TotalError();
+  double AntiWindup();
 };
 
 #endif /* PID_H */
