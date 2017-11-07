@@ -53,7 +53,8 @@ int main()
           double steer_value;
           
 		  pid.UpdateError(cte);
-		  steer_value = pid.TotalError();
+		  steer_value = - pid.TotalError();
+		  
           
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
