@@ -40,7 +40,10 @@ int main()
   // go down with the proportional part even more
   // Also decreased the integral part by a factor of 10, because the signal
   // got worse over time, which indicates a too high integrational part,
-  pid.Init(0.1, 0.05, 3.0);
+  pid.Init(0.1, 0.005, 3.0);
+  
+  PID pid_t;
+  pid_t.Init(0.3, 0.0, 3.0);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -58,9 +61,13 @@ int main()
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value;
+		  double throttle_value;
           
 		  pid.UpdateError(cte);
 		  steer_value = - pid.TotalError();
+		  
+		  pid_t.UpdateError(100 - speed);
+		  throttle_value = - pid_t.TotalError();
 		  
           
           // DEBUG
@@ -68,7 +75,7 @@ int main()
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = 0.3;
+          msgJson["throttle"] = throttle_value;;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
