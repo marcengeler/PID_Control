@@ -69,7 +69,7 @@ int main()
 		  steer_value = - pid.TotalError();
 		  
 		  pid_t.UpdateError(100 - speed);
-		  throttle_value = - pid_t.TotalError();
+		  throttle_value = pid_t.TotalError();
 		  
           
           // DEBUG
