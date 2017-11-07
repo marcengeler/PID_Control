@@ -41,10 +41,10 @@ double PID::TotalError() {
 double PID::AntiWindup() {
 	double control = + p_error + i_error + d_error;
 	double dcontrol = 0;
-	if (control > 25) {
-		dcontrol = 25 - control;
-	} else if (control < -25) {
-		dcontrol = -25 - control;
+	if (control > .43) {
+		dcontrol = .43 - control;
+	} else if (control < -.43) {
+		dcontrol = -.43 - control;
 	}
 	
 	std::cout << dcontrol << std::endl;
