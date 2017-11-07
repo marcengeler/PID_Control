@@ -41,8 +41,9 @@ int main()
   // Also decreased the integral part by a factor of 10, because the signal
   // got worse over time, which indicates a too high integrational part,
   
-  // 0.2, 0.005, 7.0 still a lot of oscillations, 
-  pid.Init(0.2, 0.005, 14.0);
+  // 0.2, 0.005, 7.0 still a lot of oscillations, so I increased the D part to
+  // dampen the system
+  pid.Init(0.2, 0.005, 21.0);
   
   
   // Added PD Throttle Control
@@ -70,7 +71,7 @@ int main()
 		  pid.UpdateError(cte);
 		  steer_value = - pid.TotalError();
 		  
-		  pid_t.UpdateError(70 - speed);
+		  pid_t.UpdateError(120 - speed);
 		  throttle_value = pid_t.TotalError();
 		  
           
