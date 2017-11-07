@@ -40,7 +40,7 @@ int main()
   // go down with the proportional part even more
   // Also decreased the integral part by a factor of 10, because the signal
   // got worse over time, which indicates a too high integrational part,
-  pid.Init(0.1, 0.005, 3.0);
+  pid.Init(0.2, 0.005, 3.0);
   
   
   // Added PD Throttle Control
@@ -68,7 +68,7 @@ int main()
 		  pid.UpdateError(cte);
 		  steer_value = - pid.TotalError();
 		  
-		  pid_t.UpdateError(100 - speed);
+		  pid_t.UpdateError(70 - speed);
 		  throttle_value = pid_t.TotalError();
 		  
           
