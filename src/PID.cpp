@@ -13,8 +13,8 @@ PID::~PID() {}
 void PID::Init(double Kp, double Ki, double Kd) {
 	
 	PID::Kp = Kp;
-	PID::Ki = Ki * PID::Kp; // Intuition from my engineering school to have kp and ti together
-	PID::Kd = Kd * PID::Kp; // Intuition from my engineering school to have kp and td together
+	PID::Ki = Ki;
+	PID::Kd = Kd;
 	
 	p_error = 0.0;
 	i_error = 0.0;
