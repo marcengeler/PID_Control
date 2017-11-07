@@ -46,6 +46,8 @@ double PID::AntiWindup() {
 		dcontrol = -25 - control;
 	}
 	
+	std::cout << dcontrol << endl;
+	
     d_windup += d_error;
 	i_windup = 0.05 * dcontrol;
 	

@@ -51,7 +51,7 @@ int main()
   
   // Added PD Throttle Control
   PID pid_t;
-  pid_t.Init(2.0, 0.01, 3.0);
+  pid_t.Init(0.25, 0.0, 3.0);
 
   h.onMessage([&pid, &pid_t](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
