@@ -46,12 +46,12 @@ int main()
   
   // 0.2, 0.005, 21.0 looks ok, but has some large errors from time to time, so
   // I decresed the proportional part again
-  pid.Init(0.2, 0.001, 60.0);
+  pid.Init(0.15, 0.0001, 60.0);
   
   
   // Added PD Throttle Control
   PID pid_t;
-  pid_t.Init(1.6, 0.0, 3.0);
+  pid_t.Init(2.0, 0.01, 3.0);
 
   h.onMessage([&pid, &pid_t](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
